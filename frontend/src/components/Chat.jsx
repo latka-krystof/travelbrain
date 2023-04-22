@@ -9,16 +9,12 @@ function Chat() {
     const [itinerary, setItinerary] = useState(null);
 
     const getItinerary = (location) => {
-        axios.get(URL + '/chat/response', {
+        axios.post(URL + '/chat/response', {
             location: location
         })
           .then((response) => {
-            if (response.data) {
-                console.log(response.data.choices[0].message.content)
-                setItinerary(response.data.choices[0].message.content)
-            } else {
-                console.log(response)
-            }
+            console.log(response)
+            setItinerary(response.data)
           })
           .catch((error) => console.log(error))
     }
@@ -26,7 +22,11 @@ function Chat() {
     return (
         <div>
             <button onClick={() => getItinerary(location)}>Get Itinerary</button>
-            {itinerary && <p>{itinerary}</p>}
+            {itinerary && 
+                <div>
+                    <p>{itinerary.plan.content}</p>
+                    {itinerary.places}
+                </div>}
         </div>
     )
 }
