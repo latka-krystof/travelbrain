@@ -44,8 +44,8 @@ const Login = () => {
     return (
         <>
             {isLoggedIn() ? (
-                <h1 className='font-dmsanstext-3xl'>
-                    You are currently logged in.
+                <h1 className='font-dmsans text-3xl'>
+                    You are currently logged in. You can now plan your trip!
                 </h1>
             ) : (
                 <div className='flex flex-col items-center justify-center w-full flex-1 text-center font-dmsans mb-12'>
@@ -61,7 +61,7 @@ const Login = () => {
                                 <input className='bg-gray-100 outline-none text-sm flex-1'
                                 type="text"
                                 id="username"
-                                placeholder='username'
+                                placeholder='Username'
                                 autoComplete="off"
                                 onChange={(e) => setUser(e.target.value)}
                                 value={user}
@@ -74,20 +74,20 @@ const Login = () => {
                                 <input className='bg-gray-100 outline-none text-sm flex-1'
                                 type="password"
                                 id="password"
-                                placeholder="password"
+                                placeholder="Password"
                                 onChange={(e) => setPwd(e.target.value)}
                                 value={pwd}
                                 required
                                 />
                             </div>
 
-                            <button className='border-2 rounded-md px-6 py-2 inline-block font-semibold text-black'>Sign in</button>
+                            <button className='border-2 rounded-md px-6 py-2 mt-5 inline-block font-semibold text-black'>Sign in</button>
                             </form>
                         </div>
                     </div>
                     <div className="w-full lg:w-6/12 bg-peach-400 text-black rounded-b-md lg:rounded-r-md lg:rounded-bl-none py-10 md:py-36 px-6 md:px-12">
                         <h2 className="text-3xl font-bold">No account yet?</h2>
-                        <a href="/register" className="border-2 border-white rounded-md px-4 py-2 inline-block font-semibold">Register</a>
+                        <a href="/register" className="border-2 rounded-md px-6 py-2 mt-5 inline-block font-semibold text-black">Register</a>
                     </div>
                     </div>
                 </div>

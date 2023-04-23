@@ -83,12 +83,12 @@ const Register = () => {
                                     <h2 className='text-3xl font-bold text-black mb-2'>Register</h2>
                                     <div className='border-2 w-10 border-peach-400 inline-block mb-2'/>
                                     <form className='flex flex-col items-center' onSubmit={handleSubmit}>
-                                        <div className='bg-gray-100 w-64 p-2 flex items-cente mb-3 rounded-md'>
+                                        <div className='bg-gray-100 w-64 p-2 flex items-center mb-3 rounded-md'>
                                             <CgProfile className='text-gray-400 m-2'/>
                                             <input className='bg-gray-100 outline-none text-sm flex-1'
                                                 type="text"
                                                 id="username"
-                                                placeholder='username'
+                                                placeholder='Username'
                                                 autoComplete="off"
                                                 onChange={(e) => setUser(e.target.value)}
                                                 value={user}
@@ -103,12 +103,12 @@ const Register = () => {
                                             </p>
                                         )}
 
-                                        <div className='bg-gray-100 w-64 p-2 flex items-cente mb-3 rounded-md'>
+                                        <div className='bg-gray-100 w-64 p-2 flex items-center mb-3 rounded-md'>
                                             <FaRegEnvelope className='text-gray-400 m-2'/>
                                             <input className='bg-gray-100  outline-none text-sm flex-1'
                                                 type="text"
                                                 id="email"
-                                                placeholder='email'
+                                                placeholder='Email'
                                                 autoComplete="off"
                                                 onChange={(e) => setMail(e.target.value)}
                                                 value={mail}
@@ -127,7 +127,7 @@ const Register = () => {
                                             <input className='bg-gray-100 outline-none text-sm flex-1'
                                                 type="password"
                                                 id="password"
-                                                placeholder='password'
+                                                placeholder='Password'
                                                 onChange={(e) => setPwd(e.target.value)}
                                                 value={pwd}
                                                 required
@@ -146,7 +146,7 @@ const Register = () => {
                                             <input className='bg-gray-100 outline-none text-sm flex-1'
                                                 type="password"
                                                 id="confirm_pwd"
-                                                placeholder='confirm password'
+                                                placeholder='Confirm password'
                                                 onChange={(e) => setMatchPwd(e.target.value)}
                                                 value={matchPwd}
                                                 required

@@ -9,7 +9,7 @@ const URL = import.meta.env.VITE_BACKEND_URL;
 
 function Slider1({setSliderValue1}) {
 
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState(1);
 
   const handleSliderChange = (e) => {
     setSliderValue1(parseInt(e.target.value));
@@ -34,7 +34,7 @@ function Slider1({setSliderValue1}) {
 
 function Slider2({setSliderValue2}) {
 
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState(1);
 
   const handleSliderChange = (e) => {
     setSliderValue2(parseInt(e.target.value));
@@ -60,7 +60,7 @@ function Slider2({setSliderValue2}) {
 
 function Slider3({setSliderValue3}) {
 
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState(1);
 
   const handleSliderChange = (e) => {
     setSliderValue3(parseInt(e.target.value));
@@ -86,7 +86,7 @@ function Slider3({setSliderValue3}) {
 
 function Slider4({setSliderValue4}) {
 
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState(1);
 
   const handleSliderChange = (e) => {
     setSliderValue4(parseInt(e.target.value));
@@ -112,7 +112,7 @@ function Slider4({setSliderValue4}) {
 
 function Slider5({setSliderValue5}) {
 
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState(1);
 
   const handleSliderChange = (e) => {
     setSliderValue5(parseInt(e.target.value));
@@ -138,7 +138,7 @@ function Slider5({setSliderValue5}) {
 
 function Slider6({setSliderValue6}) {
 
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState(1);
 
   const handleSliderChange = (e) => {
     setSliderValue6(parseInt(e.target.value));
@@ -194,7 +194,7 @@ function Form() {
     padding: '10px',
     fontFamily: 'Helvetica Neue, sans-serif',
     minHeight: '100vh',
-    minWidth: '100vw',
+    minWidth: '50vw',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -243,8 +243,8 @@ function Form() {
 
     return(
         
-        <div>
-        <h1 id="title" style={{ fontFamily: 'sans serif', fontSize: '24px', fontWeight: 'bold', backgroundColor: '#ffffff', color: 'black'}}>Preferences</h1>
+      <div>
+        <h1 id="title" className='font-dmsans text-2xl'>Preferences</h1>
         
         <form id="Preferences" style={formStyle} onSubmit = {handleSubmit}>
 
