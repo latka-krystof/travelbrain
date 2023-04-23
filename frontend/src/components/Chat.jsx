@@ -43,7 +43,14 @@ function Chat({setWaypoints}) {
     }
 
     const handleGetItinerary = () => {
-        getItinerary(city);
+        axios.post(URL + '/survey/responses', {
+            username: localStorage.getItem("currentUser"),
+        })
+          .then((response) => {
+            console.log(response);
+            getItinerary(city);
+          })
+          .catch((error) => console.log(error))
     }
 
     return (
