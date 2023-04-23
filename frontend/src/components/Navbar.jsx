@@ -38,15 +38,14 @@ function Navbar() {
                 >Plan my trip</NavLink>
             </li>)}
         </ul>
-
         <ul className='flex items-center'>
             <li>
                 {!isLoggedIn() ? (
-                    <Link to='/login' className='hover:opacity-80 bg-gradient-to-br text-black px-4 py-2 rounded-md ml-8'>
+                    <Link to='/login' className='hover:opacity-80 bg-gradient-to-br text-xl text-black px-4 py-2 rounded-md ml-8'>
                     Log in
                     </Link>
                 ) : (
-                    <Link onClick={logout} className='hover:opacity-80 bg-gradient-to-br text-black px-4 py-2 rounded-md ml-8'>
+                    <Link onClick={logout} className='hover:opacity-80 bg-gradient-to-br text-xl text-black px-4 py-2 rounded-md ml-8'>
                     Log out
                     </Link>
                 )}
