@@ -44,7 +44,7 @@ const Login = () => {
     return (
         <>
             {isLoggedIn() ? (
-                <h1 className='font-dmsans dark:text-white text-3xl'>
+                <h1 className='font-dmsanstext-3xl'>
                     You are currently logged in.
                 </h1>
             ) : (

@@ -18,18 +18,6 @@ function Navbar() {
                     isActive ? 'text-black' : ''}
                 >Home</NavLink>
             </li>
-            <li className='cursor-pointer text-xl ml-8 hover:opacity-80'>
-                <NavLink to='/register'
-                className={({ isActive }) =>
-                    isActive ? 'text-black' : ''}
-                >Register</NavLink>
-            </li>
-            <li className='cursor-pointer text-xl ml-8 hover:opacity-80'>
-                <NavLink to='/login'
-                className={({ isActive }) =>
-                    isActive ? 'text-black' : ''}
-                >Login</NavLink>
-            </li>
             {!isLoggedIn() ? ( <></>) : (
             <li className='cursor-pointer text-xl ml-8 hover:opacity-80'>
                 <NavLink to='/planning'
@@ -37,6 +25,14 @@ function Navbar() {
                     isActive ? 'text-black' : ''}
                 >Plan my trip</NavLink>
             </li>)}
+            {/*
+            {!isLoggedIn() ? ( <></>) : (
+            <li className='cursor-pointer text-xl ml-8 hover:opacity-80'>
+                <NavLink to='/profile'
+                className={({ isActive }) =>
+                    isActive ? 'text-black' : ''}
+                >Profile</NavLink>
+            </li>)} */}
         </ul>
         <ul className='flex items-center'>
             <li>

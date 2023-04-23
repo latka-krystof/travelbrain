@@ -24,6 +24,10 @@ const UserSchema = new Schema({
     responses: {
       type: Object,
       default: {}
+    },
+    saved: {
+      type: [Object], 
+      default: {}
     }
 });
 
