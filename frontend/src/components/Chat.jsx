@@ -55,9 +55,11 @@ function Chat({setWaypoints}) {
 
     return (
         <div>
-            <label htmlFor="city">Enter City:</label>
-            <input type="text" id="city" ref={inputRef} />
-            <button onClick={handleGetItinerary}>Get Itinerary</button>
+            <label htmlFor="city"></label>
+            <div className='flex flex-row'>
+                <input className='bg-gray-100 w-64 p-2 flex items-center mb-3 rounded-md border-2 border-backgroundc-200' type="text" id="city" ref={inputRef} />
+                <button className='border-2 inline-block font-semibold text-black px-4 py-2 rounded-md mb-3 mx-3' onClick={handleGetItinerary}>Get Itinerary</button>
+            </div>
             {itinerary && 
             <div>
                 {itinerary.plan.map((item, index) => (

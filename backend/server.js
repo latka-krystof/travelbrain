@@ -127,4 +127,32 @@ app.post('/survey/responses', async (req, res) => {
   res.json(user.responses);
 });
 
+app.post('/trips/save', async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  const user = await User.findOne({username: req.body.username});
+  if (!user) {
+    res.json({ 'error': 'we can\'t find your username :\<'})
+    return;
+  }
+  const trip = req.body.trip;
+  user.saved.push(trip);
+  user.save()
+    .then(() => res.json({ msg: "Trip was saved successfully!" }))
+    .catch(err => console.log(err))
+});
+
+app.post('/trips/get', async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  const user = await User.findOne({username: req.body.username});
+  if (!user) {
+    res.json({ 'error': 'we can\'t find your username :\<'})
+    return;
+  }
+  if (user.saved.length === 0) {
+    res.json({"error": 'There is no history to retrieve.'})
+    return;
+  }
+  res.json({ saved: user.saved });
+});
+
 
