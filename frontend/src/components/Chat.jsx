@@ -56,12 +56,9 @@ function Chat({setWaypoints}) {
             username: localStorage.getItem("currentUser"),
         })
           .then((response) => {
-            if (response && response.data) {
+                console.log(response.data.sliderValues[0])
                 const data = response.data;
-                getItinerary(city, data.Age, data.travellingwith, data.Historical, data.slidervalues[0], data.slidervalues[1], data.slidervalues[2], data.slidervalues[3], data.slidervalues[4], data.slidervalues[5]);
-            } else {
-                console.log('Invalid response');
-            }
+                getItinerary(city, data.Age, data.travellingwith, data.historical, data.sliderValues[0], data.sliderValues[1], data.sliderValues[2], data.sliderValues[3], data.sliderValues[4], data.sliderValues[5]);
           })
           .catch((error) => console.log(error))
     }
