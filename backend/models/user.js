@@ -20,6 +20,10 @@ const UserSchema = new Schema({
     survey: {
       type: Boolean,
       default: false,
+    },
+    responses: {
+      type: Object,
+      default: {}
     }
 });
 

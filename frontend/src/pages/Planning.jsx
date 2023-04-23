@@ -3,6 +3,7 @@ import { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import Chat from '../components/Chat';
 import Map from "../components/Map";
+import Form from '../components/Form';
 
 import { AuthContext } from '../context/context';
 
@@ -18,17 +19,6 @@ function Planning() {
         "Venice Beach, CA"
     ]);
 
-    const sendSurvey = () => {
-        axios.post(URL + '/survey', {
-            username: localStorage.getItem("currentUser"),
-        })
-        .then((response) => {
-            console.log(response);
-            fillSurvey();
-        })
-        .catch((error) => { console.log(error); });
-    }
-
     useEffect(() => {}, [waypoints]);
 
     return (
@@ -42,7 +32,7 @@ function Planning() {
                     {!isSurveyFilledOut() ? (
                         <div>
                             <h1 className='font-dmsans text-3xl mb-[75vh]'>Please fill out the survey first</h1>
-                            <button onClick={sendSurvey}>Submit survey</button>
+                            <Form />
                         </div>
                     ) : (
                         <div>
