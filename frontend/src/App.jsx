@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Map from './components/Map'
-import Chat from './components/Chat'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import LandingPage from './pages/LandingPage';
 import Navbar from './components/Navbar';
+import Planning from './pages/Planning';
 
 function App() {
   return (
@@ -16,6 +15,7 @@ function App() {
           <Route path='/' element={<LandingPage/>} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/planning' element={<Planning/>} />
         </Routes>
       </div>
     </div>

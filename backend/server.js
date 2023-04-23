@@ -38,10 +38,10 @@ app.post('/chat/response', async (req, res) => {
     temperature: 0.5,
     model: "gpt-3.5-turbo",
     messages: [
-      { role: "system", content: "You are a personal travel guide trained to plan customized full day itineraries for travellers. Give me times of day and a detailed explanation of what is unique about that place and how this relates to the traveler's interests. Do not include anything else before or after the plan." },
+      { role: "system", content: "You are a personal travel guide trained to plan customized full day itineraries for travellers. Give me times of day and a detailed explanation of what is unique about that place and how this relates to the traveler's interests. Do not include anything else before or after the plan. Do not include any places that do not have a specific address." },
       { role: "user", content: "Plan me a full day itinerary in Santa Monica" },
-      { role: "assistant", content: '9:00am - Start your day with breakfast at The Hive. This trendy spot offers delicious coffee and breakfast items, including avocado toast and breakfast burritos. \n\n10:00am - After breakfast, head over to the Santa Monica Pier. Take a walk along the boardwalk and enjoy the stunning views of the Pacific Ocean. You can also check out the amusement park, play some carnival games, and ride the Ferris wheel. \n\n12:00pm - For lunch, try out Ingo\'s Tasty Diner. This restaurant offers classic American cuisine, such as burgers and fries, as well as healthy options like salads. \n\n1:00pm - After lunch, head over to the Santa Monica State Beach. Here you can relax on the sand, take a dip in the ocean, or rent a bike to ride along the beachfront bike path. \n\n3:00pm - Next, make your way to the Third Street Promenade. This outdoor shopping center offers a wide variety of stores, including major retailers and unique boutiques. \n\n5:00pm - For dinner, try out Tar & Roses. This restaurant offers a delicious selection of small plates, as well as heartier entrees like steak and pasta. \n\n7:00pm - End your day with a movie at the AMC Dine-In Theatre. Here you can enjoy dinner and drinks while watching the latest blockbuster films.'},
-      { role: "user", content: `Based on the previous template, plan me a full day itinerary in ${location}` },
+      { role: "assistant", content: '9:00am - Start your day with breakfast at The Hive. This trendy spot offers delicious coffee and breakfast items, including avocado toast and breakfast burritos. * 10:00am - After breakfast, head over to the Santa Monica Pier. Take a walk along the boardwalk and enjoy the stunning views of the Pacific Ocean. You can also check out the amusement park, play some carnival games, and ride the Ferris wheel. * 12:00pm - For lunch, try out Ingo\'s Tasty Diner. This restaurant offers classic American cuisine, such as burgers and fries, as well as healthy options like salads. * 1:00pm - After lunch, head over to the Santa Monica State Beach. Here you can relax on the sand, take a dip in the ocean, or rent a bike to ride along the beachfront bike path. * 3:00pm - Next, make your way to the Third Street Promenade. This outdoor shopping center offers a wide variety of stores, including major retailers and unique boutiques. * 5:00pm - For dinner, try out Tar & Roses. This restaurant offers a delicious selection of small plates, as well as heartier entrees like steak and pasta. * 7:00pm - End your day with a movie at the AMC Dine-In Theatre. Here you can enjoy dinner and drinks while watching the latest blockbuster films.'},
+      { role: "user", content: `Do not write anything before or after the plan but include details. Based on the previous template and separating every suggestion by a *, plan me a full day itinerary in ${location}` },
     ],
   });
   const plan = response1.data.choices[0].message;
@@ -49,15 +49,18 @@ app.post('/chat/response', async (req, res) => {
     model: "gpt-3.5-turbo",
     temperature: 0,
     messages: [
+      { role: "system", content: "Give me all places suggested to visit by a specific itinerary and their address, separating them by a * and nothing else. Do not include anything else before or after the places."},
       { role: "user", content: `Plan me a full day itinerary in ${location}` },
-      { role: "assistant", content: plan.content },
-      { role: "user", content: "Output all places suggested to visit by the above itinerary, one on each line. "},
+      { role: "assistant", content: plan.content},
+      { role: "user", content: "Give me all places suggested to visit by the above itinerary along with their address, separating them by a * and nothing else. "}
     ],
   });
-  const places = response2.data.choices[0].message.content.split('\n');
+  const parsed_plan = response1.data.choices[0].message.content.split('*');
+  const places = response2.data.choices[0].message.content.split('*');
+  const filtered_places = places.filter(place => place !== '');
   const response = {
-    plan: plan,
-    places: places
+    plan: parsed_plan,
+    places: filtered_places
   }
   res.send(response);
 });
@@ -77,7 +80,7 @@ app.post('/register', async (req, res) => {
     return;
   }
 
-  User.create({ username: req.body.username, email: req.body.email, password: req.body.password })
+  User.create({ username: req.body.username, email: req.body.email, password: req.body.password, survey: false })
     .then(() => res.json({ msg: "New user successfully created!" }))
     .catch(err => console.log(err));
 });
@@ -98,6 +101,19 @@ app.post('/login', async (req, res) => {
       res.json({ 'error': 'incorrect password'})
     }
   }));
+});
+
+app.post('/survey', async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  const user = await User.findOne({username: req.body.username});
+  if (!user) {
+    res.json({ 'error': 'we can\'t find your username :\<'})
+    return;
+  }
+  user.survey = true;
+  user.save()
+    .then(() => res.json({ msg: "Survey filled out!" }))
+    .catch(err => console.log(err))
 });
 
 

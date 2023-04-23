@@ -17,6 +17,10 @@ const UserSchema = new Schema({
       type: String,
       required: true,
     },
+    survey: {
+      type: Boolean,
+      default: false,
+    }
 });
 
 UserSchema.pre('save', function(next) {

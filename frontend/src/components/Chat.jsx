@@ -3,12 +3,11 @@ import axios from 'axios';
 
 const URL = import.meta.env.VITE_BACKEND_URL;
 
-function Chat() {
+function Chat({setWaypoints}) {
 
     const [itinerary, setItinerary] = useState(null);
     const [city, setCity] = useState("");
     const inputRef = useRef(null); 
-
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -37,6 +36,7 @@ function Chat() {
           .then((response) => {
             console.log(response)
             setItinerary(response.data)
+            setWaypoints(response.data.places)
           })
           .catch((error) => console.log(error))
     }
@@ -51,10 +51,11 @@ function Chat() {
             <input type="text" id="city" ref={inputRef} />
             <button onClick={handleGetItinerary}>Get Itinerary</button>
             {itinerary && 
-                <div>
-                    <p>{itinerary.plan.content}</p>
-                    {itinerary.places}
-                </div>}
+            <div>
+                {itinerary.plan.map((item, index) => (
+                    <p key={index}>{item}</p>
+                ))}
+            </div>}
         </div>
     )
 }
