@@ -250,12 +250,12 @@ function Form() {
          </div>
 
          <div className = "form control">
-            <label htmlFor = "travelling  with" id = "label-travelling with" style = {questionStyle}>
+            <label htmlFor = "travellingwith" id = "label-travellingwith" style = {questionStyle}>
                 Who are you travelling with?  <br></br>
 
             </label>
 
-            <select name = "travelling with" id = "travelling with" required>
+            <select name = "travellingwith" id = "travellingwith" required>
             <option value = ""> Please Choose: </option>
             <option value = "alone"> Alone </option>
             <option value = "with partner"> With a partner </option>

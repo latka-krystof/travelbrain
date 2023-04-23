@@ -30,9 +30,18 @@ function Chat({setWaypoints}) {
         };
     }, []);
 
-    const getItinerary = (city) => {
+    const getItinerary = (city, age, travelers, historical, time, budget, personality, adventure, open, organized) => {
         axios.post(URL + '/chat/response', {
-            location: city
+            location: city, 
+            age: age,
+            travelers: travelers,
+            historical: historical,
+            time: time, 
+            budget: budget,
+            personality: personality,
+            adventure: adventure,
+            open: open,
+            organized: organized
         })
           .then((response) => {
             console.log(response)
@@ -47,11 +56,16 @@ function Chat({setWaypoints}) {
             username: localStorage.getItem("currentUser"),
         })
           .then((response) => {
-            console.log(response);
-            getItinerary(city);
+            if (response && response.data) {
+                const data = response.data;
+                getItinerary(city, data.Age, data.travellingwith, data.Historical, data.slidervalues[0], data.slidervalues[1], data.slidervalues[2], data.slidervalues[3], data.slidervalues[4], data.slidervalues[5]);
+            } else {
+                console.log('Invalid response');
+            }
           })
           .catch((error) => console.log(error))
     }
+    
 
     return (
         <div>
