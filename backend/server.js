@@ -77,7 +77,7 @@ app.post('/register', async (req, res) => {
     return;
   }
 
-  User.create({ username: req.body.username, email: req.body.email, password: req.body.password })
+  User.create({ username: req.body.username, email: req.body.email, password: req.body.password, survey: false })
     .then(() => res.json({ msg: "New user successfully created!" }))
     .catch(err => console.log(err));
 });
@@ -98,6 +98,19 @@ app.post('/login', async (req, res) => {
       res.json({ 'error': 'incorrect password'})
     }
   }));
+});
+
+app.post('/survey', async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  const user = await User.findOne({username: req.body.username});
+  if (!user) {
+    res.json({ 'error': 'we can\'t find your username :\<'})
+    return;
+  }
+  user.survey = true;
+  user.save()
+    .then(() => res.json({ msg: "Survey filled out!" }))
+    .catch(err => console.log(err))
 });
 
 

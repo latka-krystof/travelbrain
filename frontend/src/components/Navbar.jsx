@@ -15,26 +15,26 @@ function Navbar() {
             <li className='cursor-pointer text-xl shadow-black-b hover:opacity-80'>
                 <NavLink to='/'
                 className={({ isActive }) =>
-                    isActive ? 'text-peach-500' : ''}
+                    isActive ? 'text-black' : ''}
                 >Home</NavLink>
             </li>
             <li className='cursor-pointer text-xl ml-8 hover:opacity-80'>
                 <NavLink to='/register'
                 className={({ isActive }) =>
-                    isActive ? 'text-peach-500' : ''}
+                    isActive ? 'text-black' : ''}
                 >Register</NavLink>
             </li>
             <li className='cursor-pointer text-xl ml-8 hover:opacity-80'>
                 <NavLink to='/login'
                 className={({ isActive }) =>
-                    isActive ? 'text-peach-500' : ''}
+                    isActive ? 'text-black' : ''}
                 >Login</NavLink>
             </li>
             {!isLoggedIn() ? ( <></>) : (
             <li className='cursor-pointer text-xl ml-8 hover:opacity-80'>
-                <NavLink to='/#'
+                <NavLink to='/planning'
                 className={({ isActive }) =>
-                    isActive ? 'text-peach-500' : ''}
+                    isActive ? 'text-black' : ''}
                 >Plan my trip</NavLink>
             </li>)}
         </ul>

@@ -10,7 +10,7 @@ const URL = import.meta.env.VITE_BACKEND_URL;
 
 const Login = () => {
 
-    const { login, isLoggedIn } = useContext(AuthContext);
+    const { login, isLoggedIn, fillSurvey } = useContext(AuthContext);
 
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
@@ -29,6 +29,7 @@ const Login = () => {
             console.log(data);
             if (!data.error) {
                 login(data.username);
+                fillSurvey(data.survey);
             }
             else {
                 setErrorMessage(data.error);

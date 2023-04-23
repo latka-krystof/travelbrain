@@ -27,8 +27,20 @@ export const AuthProvider = ({ children }) => {
     return false;
   }
 
+  const fillSurvey = (value) => {
+    localStorage.setItem("surveyFilledOut", value);
+    setChange(!change);
+  }
+
+  const isSurveyFilledOut = () => {
+    if (localStorage.getItem("surveyFilledOut") === true) {
+      return true;
+    }
+    return false;
+  }
+
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout, fillSurvey, isSurveyFilledOut }}>
       {children}
     </AuthContext.Provider>
   );
