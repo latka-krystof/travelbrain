@@ -32,7 +32,7 @@ const Login = () => {
                 fillSurvey(data.survey);
             }
             else {
-                setErrorMessage(data.error);
+                console.log(data.error);
             }
         } catch (err) {
             console.log(err);

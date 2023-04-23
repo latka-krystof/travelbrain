@@ -111,9 +111,20 @@ app.post('/survey', async (req, res) => {
     return;
   }
   user.survey = true;
+  user.responses = req.body.responses;
   user.save()
     .then(() => res.json({ msg: "Survey filled out!" }))
     .catch(err => console.log(err))
+});
+
+app.post('/survey/responses', async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  const user = await User.findOne({username: req.body.username});
+  if (!user) {
+    res.json({ 'error': 'we can\'t find your username :\<'})
+    return;
+  }
+  res.json(user.responses);
 });
 
 

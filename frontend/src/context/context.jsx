@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem("currentUser");
+    localStorage.removeItem("surveyFilledOut");
     setChange(!change);
   };
 
@@ -27,8 +28,8 @@ export const AuthProvider = ({ children }) => {
     return false;
   }
 
-  const fillSurvey = () => {
-    localStorage.setItem("surveyFilledOut", true);
+  const fillSurvey = (value) => {
+    localStorage.setItem("surveyFilledOut", value);
     setChange(!change);
   }
 
