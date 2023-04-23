@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const URL = import.meta.env.VITE_BACKEND_URL;
 
-function Chat() {
+function Chat({setWaypoints}) {
 
     const [itinerary, setItinerary] = useState(null);
     const [city, setCity] = useState("");
@@ -37,6 +37,7 @@ function Chat() {
           .then((response) => {
             console.log(response)
             setItinerary(response.data)
+            setWaypoints(response.data.places)
           })
           .catch((error) => console.log(error))
     }

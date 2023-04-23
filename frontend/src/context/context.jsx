@@ -27,13 +27,13 @@ export const AuthProvider = ({ children }) => {
     return false;
   }
 
-  const fillSurvey = (value) => {
-    localStorage.setItem("surveyFilledOut", value);
+  const fillSurvey = () => {
+    localStorage.setItem("surveyFilledOut", true);
     setChange(!change);
   }
 
   const isSurveyFilledOut = () => {
-    if (localStorage.getItem("surveyFilledOut") === true) {
+    if (localStorage.getItem("surveyFilledOut") === "true") {
       return true;
     }
     return false;
