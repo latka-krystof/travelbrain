@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import axios from 'axios';
 
 const URL = import.meta.env.VITE_BACKEND_URL;
+const MAPS_KEY = import.meta.env.VITE_MAPS_KEY;
 
 function Chat({setWaypoints}) {
 
@@ -11,7 +12,7 @@ function Chat({setWaypoints}) {
 
     useEffect(() => {
         const script = document.createElement("script");
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAu7r8XYqEzBirJYpZTKHCghaXnJk0pU0g&libraries=places`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${MAPS_KEY}&libraries=places`;
         script.async = true;
         document.body.appendChild(script);
 
