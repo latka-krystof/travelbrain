@@ -13,9 +13,9 @@ function Planning() {
     const { isLoggedIn, isSurveyFilledOut, fillSurvey } = useContext(AuthContext);
 
     const [waypoints, setWaypoints] = useState([
-        "Rocco's Tavern",
-        "Poppy",
-        "Muscle Beach"
+        "UCLA, Los Angeles, CA",
+        "Grand Central Market, Los Angeles, CA",
+        "Venice Beach, CA"
     ]);
 
     const sendSurvey = () => {
@@ -47,11 +47,11 @@ function Planning() {
                     ) : (
                         <div>
                             <Chat setWaypoints={setWaypoints}/>
-                            <Map
-                                origin="UCLA, CA"
-                                destination="Santa Monica, CA"
+                            {waypoints && <Map
+                                origin={waypoints[0]}
+                                destination={waypoints[waypoints.length - 1]}
                                 waypoints={waypoints}
-                            />
+                            />}
                             <ul>
                                 {waypoints.map((waypoint, index) => (
                                     <li key={index}>{index + 1}. {waypoint}</li>

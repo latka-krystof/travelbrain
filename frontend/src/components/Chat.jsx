@@ -9,7 +9,6 @@ function Chat({setWaypoints}) {
     const [city, setCity] = useState("");
     const inputRef = useRef(null); 
 
-
     useEffect(() => {
         const script = document.createElement("script");
         script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAu7r8XYqEzBirJYpZTKHCghaXnJk0pU0g&libraries=places`;
@@ -52,10 +51,11 @@ function Chat({setWaypoints}) {
             <input type="text" id="city" ref={inputRef} />
             <button onClick={handleGetItinerary}>Get Itinerary</button>
             {itinerary && 
-                <div>
-                    <p>{itinerary.plan.content}</p>
-                    {itinerary.places}
-                </div>}
+            <div>
+                {itinerary.plan.map((item, index) => (
+                    <p key={index}>{item}</p>
+                ))}
+            </div>}
         </div>
     )
 }
