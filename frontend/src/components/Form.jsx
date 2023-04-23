@@ -250,19 +250,19 @@ function Form() {
 
 
         <div className = "form control">
-          <label htmlFor= "Age" id = "label-age" style = {questionStyle}>
+          <label htmlFor= "age" id = "label-age" style = {questionStyle}>
             Age <br></br>
             </label>
-            <input type = "number" id = "Age" name = "Age" placeholder='Enter your age' required />
+            <input type = "number" id = "age" name = "age" placeholder='Enter your age' required />
          </div>
 
          <div className = "form control">
-            <label htmlFor = "travelling  with" id = "label-travelling with" style = {questionStyle}>
+            <label htmlFor = "travellingwith" id = "label-travellingwith" style = {questionStyle}>
                 Who are you travelling with?  <br></br>
 
             </label>
 
-            <select name = "travelling with" id = "travelling with" required>
+            <select name = "travellingwith" id = "travellingwith" required>
             <option value = ""> Please Choose: </option>
             <option value = "alone"> Alone </option>
             <option value = "with partner"> With a partner </option>
@@ -275,7 +275,7 @@ function Form() {
 
          <div className="form-control">
 
-            <label htmlFor="Activity" id="label-Activity" style = {questionStyle} >
+            <label htmlFor="activity" id="label-activity" style = {questionStyle} >
                 Do you prefer to be active early in the morning or late at night?<br></br>
                 (1 - very early and 5 - very late )
             </label>
@@ -286,11 +286,11 @@ function Form() {
 
         <div className = "form control">
             
-            <label htmlFor= "Historical" id = "label-historical" style= {questionStyle}>
+            <label htmlFor= "historical" id = "label-historical" style= {questionStyle}>
               Are you interested in historical sites? <br></br>
               
               </label> 
-              <input type = "text" id = "Historical" name = "Historical" placeholder='Yes or No' required/>
+              <input type = "text" id = "historical" name = "historical" placeholder='Yes or No' required/>
         </div>
 
         <div className = "form control">
