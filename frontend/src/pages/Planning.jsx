@@ -31,7 +31,7 @@ function Planning() {
                 <div>
                     {!isSurveyFilledOut() ? (
                         <div>
-                            <h1 className='font-dmsans text-3xl mb-[75vh]'>Please fill out the survey first</h1>
+                            <h1 className='font-dmsans text-3xl mb-[10vh]'>Please fill out the survey first</h1>
                             <Form />
                         </div>
                     ) : (
