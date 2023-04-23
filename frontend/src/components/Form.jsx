@@ -190,27 +190,34 @@ function Form() {
   }
 
   const formStyle = {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#F5F5F5',
     padding: '10px',
+    fontFamily: 'Helvetica Neue, sans-serif',
     minHeight: '100vh',
-    minWidth: '100vw' 
+    minWidth: '100vw',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   };
-
+  
   const questionStyle = {
-    fontFamily: 'sans serif',
-    padding: '0px',
-    color: 'black',
-    fontWeight: 'bold'   
-  };
-
-  const buttonStyle = {
-    backgroundColor: 'grey',
-    padding: '10px',
-    color: 'black',
+    fontFamily: 'Helvetica Neue, sans-serif',
     fontWeight: 'bold',
-    fontFamily: 'sans serif',
-    border: '2px solid black',
-    borderWidth: '4px'
+    fontSize: '16px',
+    marginBottom: '20px',
+  };
+  
+  const buttonStyle = {
+    backgroundColor: '#4CAF50',
+    color: 'white',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontFamily: 'Helvetica Neue, sans-serif',
+    fontWeight: 'bold',
+    fontSize: '15px',
+    marginTop: '30px',
   };
 
   const handleSubmit = (event) => {
