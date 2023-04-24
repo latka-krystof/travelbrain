@@ -1,3 +1,7 @@
+# TravelBrain
+
+Developed as a project for LA HACKS 2023. Check out our Devpost submission [here.](https://devpost.com/software/travelbrain-7k2nfu)
+
 ## Inspiration
 People plan short day trips all the time. In our day and age, most people rely on a Google search to find recommended attractions, restaurants and coffee shops. However, the information online is abundant and not well-organised and it becomes increasingly difficult to plan ahead and visit as much as one wants. Most users end up spending many hours on their phones to find directions to the next place or new suggestions and lose a big part of their day, resulting in frustration. 
 ## What it does
